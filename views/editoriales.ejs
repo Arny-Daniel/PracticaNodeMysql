@@ -1,0 +1,41 @@
+<%- include('layout/header', { title: 'Editoriales' }) %>
+
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h4 class="mb-3">Lista de Editoriales</h4>
+          <% if (editoriales.length > 0) { %>
+            <ul class="list-group">
+              <% editoriales.forEach(e => { %>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <%= e.nombre %>
+                </li>
+              <% }) %>
+            </ul>
+          <% } else { %>
+            <p>No hay editoriales registradas.</p>
+          <% } %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h4 class="mb-3">Agregar Editorial</h4>
+          <form action="/editoriales" method="POST">
+            <div class="mb-3">
+              <label class="form-label">Nombre</label>
+              <input type="text" class="form-control" name="nombre" required>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Agregar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('layout/footer') %>
